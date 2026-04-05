@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>cEDH Deck Analyzer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>cEDH Deck Analyzer</h1>
+        <p>Paste a Moxfield deck link to see per-card performance stats.</p>
+      </header>
+
+      <section class="controls">
+        <label for="deckInput">Moxfield URL or ID</label>
+        <div class="row">
+          <input id="deckInput" type="text" placeholder="https://moxfield.com/decks/sTM7UOX7dku5SVm9E7OB9w" />
+          <button id="loadBtn" type="button">Load Deck</button>
+        </div>
+        <div id="status" class="status" aria-live="polite"></div>
+      </section>
+
+      <section id="results" class="results" hidden>
+        <div id="takeawaysSection" class="card summary-card" hidden>
+          <div class="card-header">
+            <div class="summary-heading">
+              <h2>Summary</h2>
+              <p class="summary-copy">
+                A quick read on how this list lines up with broader commander data.
+              </p>
+              <div class="summary-meta">
+                <span id="deckName" class="summary-meta-value">Deck</span>
+                <span class="summary-meta-separator" aria-hidden="true">/</span>
+                <span id="deckId" class="summary-meta-value"></span>
+                <span class="summary-meta-separator" aria-hidden="true">/</span>
+                <a id="deckOwnerLink" class="summary-meta-value" href="#" target="_blank" rel="noopener noreferrer"></a>
+              </div>
+            </div>
+            <div>
+              <button id="exportSummaryBtn" class="secondary-btn" type="button">Export PNG</button>
+              <div id="takeawaysStatus" class="status" aria-live="polite"></div>
+            </div>
+          </div>
+          <div id="lowDataBanner" class="low-data-banner" hidden>
+            <h3>Limited Commander Data</h3>
+            <p id="lowDataBannerText">
+              There isn't much recent EDHTop16 data available for this commander.
+            </p>
+          </div>
+          <div class="takeaways-grid">
+            <section id="deckComparisonBlock" class="takeaway-block takeaway-block--spotlight" hidden>
+              <h3 class="takeaway-kicker">Deck Edge</h3>
+              <p id="deckComparisonText" class="takeaway-detail"></p>
+            </section>
+            <section id="deckPlayRateBlock" class="takeaway-block takeaway-block--spotlight" hidden>
+              <h3 class="takeaway-kicker">Deck Consensus</h3>
+              <p id="deckPlayRateText" class="takeaway-detail"></p>
+            </section>
+            <section id="hottestTechBlock" class="takeaway-block takeaway-block--list" hidden>
+              <h3 class="takeaway-kicker">Standouts</h3>
+              <div id="hottestTechList" class="takeaway-list"></div>
+            </section>
+            <section id="potentialStinkersBlock" class="takeaway-block takeaway-block--list" hidden>
+              <h3 class="takeaway-kicker">Stinkers</h3>
+              <div id="potentialStinkersList" class="takeaway-list"></div>
+            </section>
+            <section id="missingStaplesBlock" class="takeaway-block takeaway-block--list" hidden>
+              <h3 class="takeaway-kicker">Notable Exclusions</h3>
+              <div id="missingStaplesList" class="takeaway-list"></div>
+            </section>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2>Card Data</h2>
+              <p class="filter-note">Showing only cards with play rate 75% or lower.</p>
+            </div>
+            <div>
+              <div class="row">
+                <label for="timeWindowSelect" class="sr-only">Time window</label>
+                <select id="timeWindowSelect" aria-label="Time window">
+                  <option value="THREE_MONTHS">3 months</option>
+                  <option value="SIX_MONTHS" selected>6 months</option>
+                  <option value="ONE_YEAR">12 months</option>
+                </select>
+              </div>
+              <div id="statsStatus" class="status" aria-live="polite"></div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="stats-table">
+              <thead>
+                <tr>
+                  <th>Card</th>
+                  <th
+                    data-sort="inclusion"
+                    title="Play Rate is the share of commander entries in this time range that include the card."
+                  >
+                    Play Rate
+                  </th>
+                  <th
+                    data-sort="winrate"
+                    title="Conversion Rate is the share of decks with this card that converted to a top cut, not match win percentage."
+                  >
+                    Conversion Rate
+                  </th>
+                  <th
+                    data-sort="delta"
+                    title="Impact is the difference in conversion rate between decks with the card and decks without it."
+                  >
+                    Impact
+                  </th>
+                  <th
+                    data-sort="trending"
+                    title="Trend compares this card's play rate in the last 3 months against all-time play rate."
+                  >
+                    Trend
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="statsTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+    <script src="app.js?v=20260405-1"></script>
+  </body>
+</html>
+

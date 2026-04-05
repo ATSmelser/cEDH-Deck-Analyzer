@@ -1,0 +1,1192 @@
+{
+    "data": {
+        "commander": {
+            "name": "Sisay, Weatherlight Captain",
+            "cardDetail": {
+                "name": "Agatha's Soul Cauldron",
+                "type": "Legendary Artifact",
+                "cmc": 2,
+                "colorId": "C",
+                "imageUrls": [
+                    "https://cards.scryfall.io/art_crop/front/0/1/019b51b0-e5c6-4208-922b-7736686dddcd.jpg?1692939838"
+                ],
+                "scryfallUrl": "https://scryfall.com/card/woe/242/agathas-soul-cauldron?utm_source=api",
+                "cardPreviewImageUrl": "https://cards.scryfall.io/normal/front/0/1/019b51b0-e5c6-4208-922b-7736686dddcd.jpg?1692939838",
+                "id": "Q2FyZDo5MjY="
+            },
+            "cardWinrateStats": {
+                "withCard": {
+                    "totalEntries": 657,
+                    "topCuts": 208,
+                    "conversionRate": 0.3165905631659056
+                },
+                "withoutCard": {
+                    "totalEntries": 19,
+                    "topCuts": 3,
+                    "conversionRate": 0.15789473684210525
+                }
+            },
+            "cardEntries": {
+                "edges": [
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTY1NDM0",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/MM1223/zothvFbekpQywILlKccJYBuDeP92",
+                            "player": {
+                                "name": "unrivaled",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjI2MTc="
+                            },
+                            "tournament": {
+                                "name": "Mox Masters December '23",
+                                "size": 141,
+                                "tournamentDate": "2023-12-09T08:00:00.000Z",
+                                "TID": "MM1223",
+                                "id": "VG91cm5hbWVudDo3OTYx"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "165434;1;2023-12-09T08:00:00.000Z;141"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTMxOTIw",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 0,
+                            "draws": 3,
+                            "decklist": "https://topdeck.gg/deck/V2DHDt9YXINxCGquxxoI/ZlePjFOXYabVI36O3Ky5iyQ9uV43",
+                            "player": {
+                                "name": "Bluffmeister",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjI0NTA="
+                            },
+                            "tournament": {
+                                "name": "Snowy Summit cEDH 5k Hosted By Mythic Games",
+                                "size": 129,
+                                "tournamentDate": "2024-07-13T14:00:00.000Z",
+                                "TID": "V2DHDt9YXINxCGquxxoI",
+                                "id": "VG91cm5hbWVudDo2NTQ1"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "131920;1;2024-07-13T14:00:00.000Z;129"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTI4NjIw",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 0,
+                            "draws": 3,
+                            "decklist": "https://topdeck.gg/deck/UoOCOOqP4VvSnKjIiYzC/e7mHgng9JMRvjLwYYsABRRdOyyr1",
+                            "player": {
+                                "name": "Trent Cory",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjYxMTg="
+                            },
+                            "tournament": {
+                                "name": "cEDH $5K - SCG CON Baltimore",
+                                "size": 119,
+                                "tournamentDate": "2024-07-27T12:00:00.000Z",
+                                "TID": "UoOCOOqP4VvSnKjIiYzC",
+                                "id": "VG91cm5hbWVudDo2NDQx"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "128620;1;2024-07-27T12:00:00.000Z;119"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTU1MTk4",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/J4ujwMohbCweJBnUjbF5/T4ruTEmuESdcfyBeekw061znqg22",
+                            "player": {
+                                "name": "Oliver (Baneslayer88)",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjMwNzc="
+                            },
+                            "tournament": {
+                                "name": "Lotus Series IV",
+                                "size": 85,
+                                "tournamentDate": "2024-02-24T13:00:00.000Z",
+                                "TID": "J4ujwMohbCweJBnUjbF5",
+                                "id": "VG91cm5hbWVudDo3NTQx"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "155198;1;2024-02-24T13:00:00.000Z;85"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MzIxMTY=",
+                            "standing": 1,
+                            "wins": 5,
+                            "losses": 3,
+                            "draws": 0,
+                            "decklist": "https://topdeck.gg/deck/tm-circuit-act-6-crisis/CczPdJL93uRi05eccalVM8uFBQ73",
+                            "player": {
+                                "name": "Shaka",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjQ0NTA="
+                            },
+                            "tournament": {
+                                "name": "TM Circuit Act 6: Crisis",
+                                "size": 84,
+                                "tournamentDate": "2025-09-06T14:00:00.000Z",
+                                "TID": "tm-circuit-act-6-crisis",
+                                "id": "VG91cm5hbWVudDoxNTcy"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "32116;1;2025-09-06T14:00:00.000Z;84"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTUxMzI0",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/cYKLHDyageI9zRTJebKX/mppw3BgxRYbB3pa2tIQfWE7HuTH3",
+                            "player": {
+                                "name": "Freddy Sams",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjEzMjEz"
+                            },
+                            "tournament": {
+                                "name": "March Madness 24",
+                                "size": 81,
+                                "tournamentDate": "2024-03-16T13:00:00.000Z",
+                                "TID": "cYKLHDyageI9zRTJebKX",
+                                "id": "VG91cm5hbWVudDo3Mzkw"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "151324;1;2024-03-16T13:00:00.000Z;81"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTEzNTYy",
+                            "standing": 1,
+                            "wins": 5,
+                            "losses": 0,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/f78DhmDzE4ZDrCn3wDdD/0m0nIHaJ81TkJHqwTnpR7zgwQL52",
+                            "player": {
+                                "name": "Dio",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjI1MTQ="
+                            },
+                            "tournament": {
+                                "name": "Bufftown Bullies Monster Mash cEDH Event",
+                                "size": 75,
+                                "tournamentDate": "2024-10-19T14:30:00.000Z",
+                                "TID": "f78DhmDzE4ZDrCn3wDdD",
+                                "id": "VG91cm5hbWVudDo1NzQz"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "113562;1;2024-10-19T14:30:00.000Z;75"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTcxMzk=",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/tm-circuit-act-7-climactic-crash/TdXy6jQ5i2U0AdoDDYW7mrjxO4Q2",
+                            "player": {
+                                "name": "Matthew  Robins (xRNGx)",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjEwMDc="
+                            },
+                            "tournament": {
+                                "name": "TM Circuit Act 7: Climactic Crash",
+                                "size": 75,
+                                "tournamentDate": "2025-10-18T14:00:00.000Z",
+                                "TID": "tm-circuit-act-7-climactic-crash",
+                                "id": "VG91cm5hbWVudDo4MDY="
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "17139;1;2025-10-18T14:00:00.000Z;75"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTY2MzU2",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/OBerLsts6zfXJdIjoEUx/Jby18gT1jwhEP7mN7qUrgs3Ab8C2",
+                            "player": {
+                                "name": "Jeremy Davis",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjU0MTc="
+                            },
+                            "tournament": {
+                                "name": "CEDH 2K - TC's Rockets - TopDeck Championship Series",
+                                "size": 67,
+                                "tournamentDate": "2023-11-18T08:00:00.000Z",
+                                "TID": "OBerLsts6zfXJdIjoEUx",
+                                "id": "VG91cm5hbWVudDo4MDUz"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "166356;1;2023-11-18T08:00:00.000Z;67"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6NDg4MDI=",
+                            "standing": 1,
+                            "wins": 5,
+                            "losses": 1,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/6k-cedh-event-mox-emerald-chains-duals-and-more/1N4T28IVAAM7AP2SFVI1ceizYt73",
+                            "player": {
+                                "name": "(Kevin)Tacobellpiglet",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjgxNQ=="
+                            },
+                            "tournament": {
+                                "name": "6k cEDH Event - Mox Emerald, Chains, Duals AND MORE",
+                                "size": 66,
+                                "tournamentDate": "2025-07-12T15:00:00.000Z",
+                                "TID": "6k-cedh-event-mox-emerald-chains-duals-and-more",
+                                "id": "VG91cm5hbWVudDoyNDMx"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "48802;1;2025-07-12T15:00:00.000Z;66"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6NDYxNDM=",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/why-the-f-july-in-cedh-5k/oZFE1t40kHTbsDKT09v4gHS9n833",
+                            "player": {
+                                "name": "Max B",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjM4ODA="
+                            },
+                            "tournament": {
+                                "name": "WHY THE F@%$ JULY-IN CEDH 5K!",
+                                "size": 64,
+                                "tournamentDate": "2025-07-19T15:00:00.000Z",
+                                "TID": "why-the-f-july-in-cedh-5k",
+                                "id": "VG91cm5hbWVudDoyMzAy"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "46143;1;2025-07-19T15:00:00.000Z;64"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MjkyNzU=",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/millennium-commander-royale-2025/8NBefCmzA6OicEPBlcwVoIFOPax2",
+                            "player": {
+                                "name": "James gilleard",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjE1Njg0"
+                            },
+                            "tournament": {
+                                "name": "Millennium Commander Royale 2025",
+                                "size": 64,
+                                "tournamentDate": "2025-09-12T22:30:00.000Z",
+                                "TID": "millennium-commander-royale-2025",
+                                "id": "VG91cm5hbWVudDoxNDYy"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "29275;1;2025-09-12T22:30:00.000Z;64"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTA5MDc1",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/XH9ztr0eGZauEy5BWN9W/b4M58ysSnofdxniE81PsDDcmxki2",
+                            "player": {
+                                "name": "Evann Jackson",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjI1NDg3"
+                            },
+                            "tournament": {
+                                "name": "Mana Masters cEDH Fall 2024",
+                                "size": 63,
+                                "tournamentDate": "2024-11-09T16:00:00.000Z",
+                                "TID": "XH9ztr0eGZauEy5BWN9W",
+                                "id": "VG91cm5hbWVudDo1NTQ5"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "109075;1;2024-11-09T16:00:00.000Z;63"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTk5OTcy",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/january-cedh-new-years-one-of-each-of-dual-land-winter/yjYxM96teWXrjakkVOdc3LqfiyA2",
+                            "player": {
+                                "name": "Matthew Meister",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjQxODU="
+                            },
+                            "tournament": {
+                                "name": "January CEDH New Years, One of each of dual land Winter Extravaganza!!!!! Yes this tournament is for one of each of the 10 duals!!!!",
+                                "size": 62,
+                                "tournamentDate": "2026-01-03T17:00:00.000Z",
+                                "TID": "january-cedh-new-years-one-of-each-of-dual-land-winter",
+                                "id": "VG91cm5hbWVudDo5NDU4"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "199972;1;2026-01-03T17:00:00.000Z;62"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTUxNDY4",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/flS9Tc4uhgIjgDLbvvFE/B0wIZVnh9Kg6pCSOALEev1LhgwJ3",
+                            "player": {
+                                "name": "Nick Aucoin (TCMBiscuit)",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjIyMzU1"
+                            },
+                            "tournament": {
+                                "name": "Treasure Series XII",
+                                "size": 61,
+                                "tournamentDate": "2024-03-16T12:00:00.000Z",
+                                "TID": "flS9Tc4uhgIjgDLbvvFE",
+                                "id": "VG91cm5hbWVudDo3Mzk4"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "151468;1;2024-03-16T12:00:00.000Z;61"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTUxMTY0",
+                            "standing": 1,
+                            "wins": 5,
+                            "losses": 2,
+                            "draws": 0,
+                            "decklist": "https://topdeck.gg/deck/sQloTEVuo54QirIfX9kW/GHPNb0E7DnWMVIsJIhYSXre58rB3",
+                            "player": {
+                                "name": "Ian Flannery",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjQ4MjI="
+                            },
+                            "tournament": {
+                                "name": "GalaxyCon Richmond cEDH for Full Set Dual Lands",
+                                "size": 61,
+                                "tournamentDate": "2024-03-16T13:00:00.000Z",
+                                "TID": "sQloTEVuo54QirIfX9kW",
+                                "id": "VG91cm5hbWVudDo3Mzg4"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "151164;1;2024-03-16T13:00:00.000Z;61"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTY5OTUw",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/MMLCQ23/Jby18gT1jwhEP7mN7qUrgs3Ab8C2",
+                            "player": {
+                                "name": "Jeremy Davis",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjU0MTc="
+                            },
+                            "tournament": {
+                                "name": "Mox Masters LCQ 23",
+                                "size": 60,
+                                "tournamentDate": "2023-10-20T07:00:00.000Z",
+                                "TID": "MMLCQ23",
+                                "id": "VG91cm5hbWVudDo4MTgw"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "169950;1;2023-10-20T07:00:00.000Z;60"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTUzOTI5",
+                            "standing": 1,
+                            "wins": 5,
+                            "losses": 0,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/fv7NxsnuUxeAKntfgfDG/YFsl1b9VVUSgEyQwq000bl3b9z22",
+                            "player": {
+                                "name": "Reid Esplin",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjQxMjY2"
+                            },
+                            "tournament": {
+                                "name": "King's Court March CEDH 2k!",
+                                "size": 58,
+                                "tournamentDate": "2024-03-02T13:00:00.000Z",
+                                "TID": "fv7NxsnuUxeAKntfgfDG",
+                                "id": "VG91cm5hbWVudDo3NDk4"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "153929;1;2024-03-02T13:00:00.000Z;58"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTI2MDY1",
+                            "standing": 1,
+                            "wins": 3,
+                            "losses": 0,
+                            "draws": 3,
+                            "decklist": "https://topdeck.gg/deck/ajk5Z4L3syBqhBPltPfp/ZlePjFOXYabVI36O3Ky5iyQ9uV43",
+                            "player": {
+                                "name": "Bluffmeister",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjI0NTA="
+                            },
+                            "tournament": {
+                                "name": "Jam City",
+                                "size": 58,
+                                "tournamentDate": "2024-08-10T14:00:00.000Z",
+                                "TID": "ajk5Z4L3syBqhBPltPfp",
+                                "id": "VG91cm5hbWVudDo2MzI3"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "126065;1;2024-08-10T14:00:00.000Z;58"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MjA1OTQy",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/sky-high-commanders-cup-january/zOlGawpZnUMMf64neUFfyPbGP693",
+                            "player": {
+                                "name": "Nelson Delgado",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjE4NTk="
+                            },
+                            "tournament": {
+                                "name": "Sky High Commander's Cup January ",
+                                "size": 57,
+                                "tournamentDate": "2026-01-17T18:00:00.000Z",
+                                "TID": "sky-high-commanders-cup-january",
+                                "id": "VG91cm5hbWVudDo5NzYw"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "205942;1;2026-01-17T18:00:00.000Z;57"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTE0NDM4",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 0,
+                            "decklist": "https://topdeck.gg/deck/E6xyOUDwiIALW6VpIzyM/HCuHCikxkrhZvvIfVyf15s6YRL53",
+                            "player": {
+                                "name": "Luiz Moraes",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjg3Njg="
+                            },
+                            "tournament": {
+                                "name": "Rift in the Format",
+                                "size": 54,
+                                "tournamentDate": "2024-10-12T16:00:00.000Z",
+                                "TID": "E6xyOUDwiIALW6VpIzyM",
+                                "id": "VG91cm5hbWVudDo1ODAz"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "114438;1;2024-10-12T16:00:00.000Z;54"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTMyMzQ3",
+                            "standing": 1,
+                            "wins": 3,
+                            "losses": 0,
+                            "draws": 3,
+                            "decklist": "https://topdeck.gg/deck/F6JmGDMR2ISYOQzuweW9/Qu6pkxRmIiQZgCnXKFtA1sz0Q5z2",
+                            "player": {
+                                "name": "Duncan Dietz",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjc2NDA="
+                            },
+                            "tournament": {
+                                "name": "Independence PLAY2K CEDH TOURNEY!",
+                                "size": 53,
+                                "tournamentDate": "2024-07-06T13:00:00.000Z",
+                                "TID": "F6JmGDMR2ISYOQzuweW9",
+                                "id": "VG91cm5hbWVudDo2NTk2"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "132347;1;2024-07-06T13:00:00.000Z;53"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTQ0NDE0",
+                            "standing": 1,
+                            "wins": 3,
+                            "losses": 0,
+                            "draws": 3,
+                            "decklist": "https://topdeck.gg/deck/G1ceTTDWV8WvRo2pzeHp/mctdMFV7BCQ1qAEtj0iYZR4AHUr1",
+                            "player": {
+                                "name": "Daniel Gray",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjExMjAw"
+                            },
+                            "tournament": {
+                                "name": "Command Wars",
+                                "size": 52,
+                                "tournamentDate": "2024-04-27T13:00:00.000Z",
+                                "TID": "G1ceTTDWV8WvRo2pzeHp",
+                                "id": "VG91cm5hbWVudDo3MDk4"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "144414;1;2024-04-27T13:00:00.000Z;52"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTQ0MTAz",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/R58u0Fm33QYrbfZBPMAj/wKJya7opU9SRRfmah1kJSMFcEfj2",
+                            "player": {
+                                "name": "Jason Crone",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjM2MTg0"
+                            },
+                            "tournament": {
+                                "name": "Commander Showdown XIV: The Joke Is On You",
+                                "size": 52,
+                                "tournamentDate": "2024-04-28T13:00:00.000Z",
+                                "TID": "R58u0Fm33QYrbfZBPMAj",
+                                "id": "VG91cm5hbWVudDo3MDgz"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "144103;1;2024-04-28T13:00:00.000Z;52"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6OTU0MDQ=",
+                            "standing": 1,
+                            "wins": 3,
+                            "losses": 1,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/1nnQ58w0ciWoKvwXiaXC/k5lD1A6QZUhPJ6llNHXINhhZyXf1",
+                            "player": {
+                                "name": "Erik Carbonell [Monolith]",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjQxNzY="
+                            },
+                            "tournament": {
+                                "name": "The Tropical Vacation ",
+                                "size": 52,
+                                "tournamentDate": "2025-01-25T18:00:00.000Z",
+                                "TID": "1nnQ58w0ciWoKvwXiaXC",
+                                "id": "VG91cm5hbWVudDo0ODUy"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "95404;1;2025-01-25T18:00:00.000Z;52"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTM2ODE1",
+                            "standing": 1,
+                            "wins": 3,
+                            "losses": 1,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/1H1hFQvgRpj5f8MvFzeX/WhPrdN6awAgETzteW4BtPSnIryl1",
+                            "player": {
+                                "name": "[LPW] Zach hood",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjY5MTg="
+                            },
+                            "tournament": {
+                                "name": "CCS Summer Showdown Bonus Round CEDH 2k",
+                                "size": 51,
+                                "tournamentDate": "2024-06-09T12:00:00.000Z",
+                                "TID": "1H1hFQvgRpj5f8MvFzeX",
+                                "id": "VG91cm5hbWVudDo2Nzg3"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "136815;1;2024-06-09T12:00:00.000Z;51"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTMzNDQz",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/7N3Upf5oHcMAgFcOLFxZ/1N4T28IVAAM7AP2SFVI1ceizYt73",
+                            "player": {
+                                "name": "(Kevin)Tacobellpiglet",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjgxNQ=="
+                            },
+                            "tournament": {
+                                "name": "Commander Showdown XIX: Pride - It Takes Two",
+                                "size": 51,
+                                "tournamentDate": "2024-06-30T13:00:00.000Z",
+                                "TID": "7N3Upf5oHcMAgFcOLFxZ",
+                                "id": "VG91cm5hbWVudDo2NjMy"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "133443;1;2024-06-30T13:00:00.000Z;51"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6NDgyMzI=",
+                            "standing": 1,
+                            "wins": 3,
+                            "losses": 1,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/the-high-roller-cedh-tournament-presented-by-mind-full/4R0SAZePumTkRoVibwrx57vzqPw2",
+                            "player": {
+                                "name": "Joshua Montgomery",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjkwOA=="
+                            },
+                            "tournament": {
+                                "name": "\"The Summer Heater\" X SEAEDH15 $3K cEDH Tournament Presented by Mind Full Games And SEAEDH",
+                                "size": 51,
+                                "tournamentDate": "2025-07-12T18:00:00.000Z",
+                                "TID": "the-high-roller-cedh-tournament-presented-by-mind-full",
+                                "id": "VG91cm5hbWVudDoyNDEz"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "48232;1;2025-07-12T18:00:00.000Z;51"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6NTYxOTY=",
+                            "standing": 1,
+                            "wins": 3,
+                            "losses": 1,
+                            "draws": 0,
+                            "decklist": "https://topdeck.gg/deck/hot-heels-of-summer/L3hBl017k8WgDcajLizwa89GjNX2",
+                            "player": {
+                                "name": "Bryan Li",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjk1OTM="
+                            },
+                            "tournament": {
+                                "name": "Hot Heels of Summer",
+                                "size": 50,
+                                "tournamentDate": "2025-06-21T13:30:00.000Z",
+                                "TID": "hot-heels-of-summer",
+                                "id": "VG91cm5hbWVudDoyODEx"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "56196;1;2025-06-21T13:30:00.000Z;50"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTQ4OTM=",
+                            "standing": 1,
+                            "wins": 2,
+                            "losses": 0,
+                            "draws": 3,
+                            "decklist": "https://topdeck.gg/deck/the-return-of-cedh-fire-dice/Jby18gT1jwhEP7mN7qUrgs3Ab8C2",
+                            "player": {
+                                "name": "Jeremy Davis",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjU0MTc="
+                            },
+                            "tournament": {
+                                "name": "The Return of cEDH @ Fire & Dice",
+                                "size": 50,
+                                "tournamentDate": "2025-10-19T17:00:00.000Z",
+                                "TID": "the-return-of-cedh-fire-dice",
+                                "id": "VG91cm5hbWVudDo3NDg="
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "14893;1;2025-10-19T17:00:00.000Z;50"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTY1Nzgx",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 0,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/hC0asqMQhkPtV4BRWf1W/e0CwSN3n20XUMwCQ4TBSqm7KkPQ2",
+                            "player": {
+                                "name": "Adam Drouillard",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjIwMjM="
+                            },
+                            "tournament": {
+                                "name": "November 25th Commander 2k",
+                                "size": 49,
+                                "tournamentDate": "2023-11-25T05:00:00.000Z",
+                                "TID": "hC0asqMQhkPtV4BRWf1W",
+                                "id": "VG91cm5hbWVudDo4MDMx"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "165781;1;2023-11-25T05:00:00.000Z;49"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTIzMjIx",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 0,
+                            "decklist": "https://topdeck.gg/deck/yCHZfSilVVWg5LFQncov/YcwTBspOeiYX5nYoeTJEGJiOBSO2",
+                            "player": {
+                                "name": "Logan Smart",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjUxMTM="
+                            },
+                            "tournament": {
+                                "name": "Make Magic Great Again #2 | CEDH 1.5k (Proxy Friendly)",
+                                "size": 49,
+                                "tournamentDate": "2024-08-24T12:00:00.000Z",
+                                "TID": "yCHZfSilVVWg5LFQncov",
+                                "id": "VG91cm5hbWVudDo2MjIw"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "123221;1;2024-08-24T12:00:00.000Z;49"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTUzNzM5",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/GYREAJwGICBNqGZhYab0/EGFslVtBQKQiwaqEnB6ueh2caVR2",
+                            "player": {
+                                "name": "CheesecakeBarry",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjYyMzE="
+                            },
+                            "tournament": {
+                                "name": "Atomic Empire cEDH Plateau Tournament",
+                                "size": 48,
+                                "tournamentDate": "2024-03-02T13:00:00.000Z",
+                                "TID": "GYREAJwGICBNqGZhYab0",
+                                "id": "VG91cm5hbWVudDo3NDk0"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "153739;1;2024-03-02T13:00:00.000Z;48"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTI4NDA4",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 0,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/0TeEubYu8rA3AaxVqiRL/agkNjirMvVzMCIPWO6mh",
+                            "player": {
+                                "name": "Josh Cantu",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjUwNjMy"
+                            },
+                            "tournament": {
+                                "name": "RoCk HaRd!",
+                                "size": 48,
+                                "tournamentDate": "2024-07-27T13:00:00.000Z",
+                                "TID": "0TeEubYu8rA3AaxVqiRL",
+                                "id": "VG91cm5hbWVudDo2NDM0"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "128408;1;2024-07-27T13:00:00.000Z;48"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTQwNzIz",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/2gTaRxVQ99SsiQ0PLd6m/1N4T28IVAAM7AP2SFVI1ceizYt73",
+                            "player": {
+                                "name": "(Kevin)Tacobellpiglet",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjgxNQ=="
+                            },
+                            "tournament": {
+                                "name": "Commander Showdown XVII: It's Gonna Be May",
+                                "size": 46,
+                                "tournamentDate": "2024-05-19T13:00:00.000Z",
+                                "TID": "2gTaRxVQ99SsiQ0PLd6m",
+                                "id": "VG91cm5hbWVudDo2OTMx"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "140723;1;2024-05-19T13:00:00.000Z;46"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTE4MTQ5",
+                            "standing": 1,
+                            "wins": 3,
+                            "losses": 0,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/m5Y3JSUV9yHqv8XQNsIz/J0WpcYkzXHNU2iUtvVFnS2tlcTr1",
+                            "player": {
+                                "name": "Zak Stamper",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjQwOTc="
+                            },
+                            "tournament": {
+                                "name": "WCG Sep CEDH Event ($30/Full Proxy)",
+                                "size": 46,
+                                "tournamentDate": "2024-09-22T15:00:00.000Z",
+                                "TID": "m5Y3JSUV9yHqv8XQNsIz",
+                                "id": "VG91cm5hbWVudDo1OTcy"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "118149;1;2024-09-22T15:00:00.000Z;46"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MzExNjc=",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 0,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/fall-brawl-2k/Qu6pkxRmIiQZgCnXKFtA1sz0Q5z2",
+                            "player": {
+                                "name": "Duncan Dietz",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjc2NDA="
+                            },
+                            "tournament": {
+                                "name": "Fall Brawl 2k!",
+                                "size": 46,
+                                "tournamentDate": "2025-09-06T15:00:00.000Z",
+                                "TID": "fall-brawl-2k",
+                                "id": "VG91cm5hbWVudDoxNTY2"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "31167;1;2025-09-06T15:00:00.000Z;46"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MjA5MTQ=",
+                            "standing": 1,
+                            "wins": 3,
+                            "losses": 1,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/lvo-saturday-5k-oct-4/RinwsvfhX2Rt1nO3oUci3fVEkSB2",
+                            "player": {
+                                "name": "Douglas Baxter (Malady)",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjMxMjk="
+                            },
+                            "tournament": {
+                                "name": "LVO Saturday 5k Oct 4",
+                                "size": 46,
+                                "tournamentDate": "2025-10-04T16:00:00.000Z",
+                                "TID": "lvo-saturday-5k-oct-4",
+                                "id": "VG91cm5hbWVudDoxMDU5"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "20914;1;2025-10-04T16:00:00.000Z;46"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTc5NDk=",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 1,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/collectible-cards-and-games-cedh-win-a-led/1N4T28IVAAM7AP2SFVI1ceizYt73",
+                            "player": {
+                                "name": "(Kevin)Tacobellpiglet",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjgxNQ=="
+                            },
+                            "tournament": {
+                                "name": "Collectible Cards and Games: CEDH Win a Diamond",
+                                "size": 46,
+                                "tournamentDate": "2025-10-11T16:00:00.000Z",
+                                "TID": "collectible-cards-and-games-cedh-win-a-led",
+                                "id": "VG91cm5hbWVudDo5Mjg="
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "17949;1;2025-10-11T16:00:00.000Z;46"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTY4MTEz",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 3,
+                            "draws": 0,
+                            "decklist": "https://topdeck.gg/deck/avTV38hk3vA8bzD06hRe/e7mHgng9JMRvjLwYYsABRRdOyyr1",
+                            "player": {
+                                "name": "Trent Cory",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjYxMTg="
+                            },
+                            "tournament": {
+                                "name": "cEDH Reserve List Series - Mox Diamond 11/04/2023",
+                                "size": 45,
+                                "tournamentDate": "2023-11-04T04:00:00.000Z",
+                                "TID": "avTV38hk3vA8bzD06hRe",
+                                "id": "VG91cm5hbWVudDo4MTE5"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "168113;1;2023-11-04T04:00:00.000Z;45"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6NzU2MTc=",
+                            "standing": 1,
+                            "wins": 5,
+                            "losses": 0,
+                            "draws": 2,
+                            "decklist": "https://topdeck.gg/deck/demonic-battlegrounds-2025-cedh-tournament/cqOKmlR8GMT5mav60nhHULVezpP2",
+                            "player": {
+                                "name": "Thomas Orellano",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjg2OTA="
+                            },
+                            "tournament": {
+                                "name": "Demonic Battlegrounds 2025 - cEDH Tournament",
+                                "size": 45,
+                                "tournamentDate": "2025-04-13T08:00:00.000Z",
+                                "TID": "demonic-battlegrounds-2025-cedh-tournament",
+                                "id": "VG91cm5hbWVudDozODE5"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "75617;1;2025-04-13T08:00:00.000Z;45"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTIzMTM4",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 0,
+                            "decklist": "https://topdeck.gg/deck/Vo2ZfzP0xI8ucMnR5Cix/YegnxvwehsWyGhiJpWKPOKpyGjR2",
+                            "player": {
+                                "name": "Carl Wauer",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjk1MzM="
+                            },
+                            "tournament": {
+                                "name": "MBG August 24th Commander 2k",
+                                "size": 44,
+                                "tournamentDate": "2024-08-24T16:00:00.000Z",
+                                "TID": "Vo2ZfzP0xI8ucMnR5Cix",
+                                "id": "VG91cm5hbWVudDo2MjEz"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "123138;1;2024-08-24T16:00:00.000Z;44"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTg5Mzgy",
+                            "standing": 1,
+                            "wins": 3,
+                            "losses": 0,
+                            "draws": 3,
+                            "decklist": "https://topdeck.gg/deck/frenzy-land-go-qualifier-15k/abQk3XEl3GRRXzV5VvFftPjxv9Y2",
+                            "player": {
+                                "name": "Brandon McLauchlan",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjg1MQ=="
+                            },
+                            "tournament": {
+                                "name": "Frenzy Land Go Qualifier - $1.5k",
+                                "size": 43,
+                                "tournamentDate": "2025-11-30T15:30:00.000Z",
+                                "TID": "frenzy-land-go-qualifier-15k",
+                                "id": "VG91cm5hbWVudDo4ODU4"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "189382;1;2025-11-30T15:30:00.000Z;43"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTUyMjgy",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 0,
+                            "decklist": "https://topdeck.gg/deck/O4loxTHkPnMMNnsKLZ3z/daEKSB3f0jPl62WaO6ELEuPJrXe2",
+                            "player": {
+                                "name": "Barak Reynolds",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjExNDA1"
+                            },
+                            "tournament": {
+                                "name": "Sky High March CEDH",
+                                "size": 43,
+                                "tournamentDate": "2024-03-09T13:00:00.000Z",
+                                "TID": "O4loxTHkPnMMNnsKLZ3z",
+                                "id": "VG91cm5hbWVudDo3NDQx"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "152282;1;2024-03-09T13:00:00.000Z;43"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTI0NDU0",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/IdtX3T3a8PzZJ4NpUHJf/1N4T28IVAAM7AP2SFVI1ceizYt73",
+                            "player": {
+                                "name": "(Kevin)Tacobellpiglet",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjgxNQ=="
+                            },
+                            "tournament": {
+                                "name": "The Skirmish V",
+                                "size": 43,
+                                "tournamentDate": "2024-08-17T13:00:00.000Z",
+                                "TID": "IdtX3T3a8PzZJ4NpUHJf",
+                                "id": "VG91cm5hbWVudDo2Mjcx"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "124454;1;2024-08-17T13:00:00.000Z;43"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MjA5ODY2",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/crypts-and-salsa-3k-1/aj6Mgd7kPGONELjFP2jKh5bgrFu2",
+                            "player": {
+                                "name": "Jarrod Ator",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjM3NDc="
+                            },
+                            "tournament": {
+                                "name": "Crypts and Salsa $3K",
+                                "size": 42,
+                                "tournamentDate": "2026-01-25T17:15:00.000Z",
+                                "TID": "crypts-and-salsa-3k-1",
+                                "id": "VG91cm5hbWVudDo5OTM0"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "209866;1;2026-01-25T17:15:00.000Z;42"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTQ0NzUy",
+                            "standing": 1,
+                            "wins": 5,
+                            "losses": 0,
+                            "draws": 1,
+                            "decklist": "https://topdeck.gg/deck/JZxSE03c3sl7uo647saV/2HCgRchKmFNdgZhw9ejXp2iZ4no1",
+                            "player": {
+                                "name": "Ben Mullan",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjI2NjQ="
+                            },
+                            "tournament": {
+                                "name": "cEDH Qualifier (27.4.24 V14 @ Doncaster)",
+                                "size": 42,
+                                "tournamentDate": "2024-04-27T07:00:00.000Z",
+                                "TID": "JZxSE03c3sl7uo647saV",
+                                "id": "VG91cm5hbWVudDo3MTE2"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "144752;1;2024-04-27T07:00:00.000Z;42"
+                    },
+                    {
+                        "node": {
+                            "id": "RW50cnk6MTQyMjE4",
+                            "standing": 1,
+                            "wins": 4,
+                            "losses": 2,
+                            "draws": 0,
+                            "decklist": "https://topdeck.gg/deck/ugpQnyx9SblYQdMhUiEE/e7mHgng9JMRvjLwYYsABRRdOyyr1",
+                            "player": {
+                                "name": "Trent Cory",
+                                "isKnownCheater": false,
+                                "id": "UGxheWVyOjYxMTg="
+                            },
+                            "tournament": {
+                                "name": "Imperial’s Value Breach CEDH 1K 2 ",
+                                "size": 42,
+                                "tournamentDate": "2024-05-11T12:00:00.000Z",
+                                "TID": "ugpQnyx9SblYQdMhUiEE",
+                                "id": "VG91cm5hbWVudDo3MDA2"
+                            },
+                            "__typename": "Entry"
+                        },
+                        "cursor": "142218;1;2024-05-11T12:00:00.000Z;42"
+                    }
+                ],
+                "pageInfo": {
+                    "endCursor": "142218;1;2024-05-11T12:00:00.000Z;42",
+                    "hasNextPage": true
+                }
+            },
+            "id": "Q29tbWFuZGVyOjMz"
+        }
+    }
+}
