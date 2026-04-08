@@ -5,9 +5,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const API_BASE = "https://api.moxfield.com/v2/decks/all";
 const EDH_API_URL = "https://edhtop16.com/api/graphql";
+const SCRYFALL_SEARCH_URL = "https://api.scryfall.com/cards/search";
+const SCRYFALL_NAMED_URL = "https://api.scryfall.com/cards/named";
 const EDH_CACHE_TTL_MS = 60 * 60 * 1000;
 const edhCache = new Map();
 const staplesCache = new Map();
+const scryfallCache = new Map();
 const ALLOWED_TIME_PERIODS = new Set([
   "ONE_MONTH",
   "THREE_MONTHS",
@@ -16,6 +19,7 @@ const ALLOWED_TIME_PERIODS = new Set([
   "ALL_TIME",
   "POST_BAN",
 ]);
+const DEFAULT_MIN_EVENT_SIZE = 30;
 const EDH_CARD_WINRATE_QUERY = `
   query CardWinrate($name: String!, $cardName: String, $timePeriod: TimePeriod!) {
     commander(name: $name) {
@@ -64,6 +68,10 @@ function normalizeText(value) {
   return (value || "").toString().trim();
 }
 
+function scryfallCacheKey(cardName) {
+  return normalizeText(cardName).toLowerCase();
+}
+
 function edhCacheKey({ commander, cardName, timePeriod }) {
   return [commander, cardName, timePeriod].join("|").toLowerCase();
 }
@@ -110,6 +118,94 @@ function parseCommanderStaples(html) {
   return cards;
 }
 
+function fetchJson(url, headers = {}) {
+  return new Promise((resolve, reject) => {
+    https
+      .get(
+        url,
+        {
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+            Accept: "application/json;q=0.9,*/*;q=0.8",
+            ...headers,
+          },
+        },
+        (apiRes) => {
+          let data = "";
+          apiRes.on("data", (chunk) => {
+            data += chunk;
+          });
+          apiRes.on("end", () => {
+            if (apiRes.statusCode && apiRes.statusCode >= 400) {
+              reject(new Error(`Upstream request failed (${apiRes.statusCode})`));
+              return;
+            }
+
+            try {
+              resolve(JSON.parse(data));
+            } catch (error) {
+              reject(new Error("Invalid upstream response"));
+            }
+          });
+        }
+      )
+      .on("error", () => {
+        reject(new Error("Proxy error"));
+      });
+  });
+}
+
+async function fetchCardReleaseInfo(cardName) {
+  const normalizedName = normalizeText(cardName);
+  if (!normalizedName) return null;
+
+  const cacheKey = scryfallCacheKey(normalizedName);
+  const cached = scryfallCache.get(cacheKey);
+  if (cached && Date.now() - cached.timestamp < EDH_CACHE_TTL_MS) {
+    return cached.data;
+  }
+
+  try {
+    const params = new URLSearchParams({
+      q: `!"${normalizedName}"`,
+      unique: "prints",
+      order: "released",
+      dir: "asc",
+    });
+    const response = await fetchJson(`${SCRYFALL_SEARCH_URL}?${params.toString()}`);
+    const earliestPrinting =
+      Array.isArray(response?.data) && response.data.length > 0 ? response.data[0] : null;
+    let releaseInfo = earliestPrinting?.released_at
+      ? {
+          firstReleasedAt: earliestPrinting.released_at,
+        }
+      : null;
+
+    if (!releaseInfo) {
+      const namedParams = new URLSearchParams({ exact: normalizedName });
+      const namedResponse = await fetchJson(`${SCRYFALL_NAMED_URL}?${namedParams.toString()}`);
+      releaseInfo = namedResponse?.released_at
+        ? {
+            firstReleasedAt: namedResponse.released_at,
+          }
+        : null;
+    }
+
+    scryfallCache.set(cacheKey, {
+      data: releaseInfo,
+      timestamp: Date.now(),
+    });
+    return releaseInfo;
+  } catch (error) {
+    scryfallCache.set(cacheKey, {
+      data: null,
+      timestamp: Date.now(),
+    });
+    return null;
+  }
+}
+
 app.get("/api/deck", async (req, res) => {
   try {
     const deckId = extractDeckId(req.query.id);
@@ -131,7 +227,7 @@ app.get("/api/deck", async (req, res) => {
           apiRes.on("data", (chunk) => {
             data += chunk;
           });
-          apiRes.on("end", () => {
+          apiRes.on("end", async () => {
             if (apiRes.statusCode && apiRes.statusCode >= 400) {
               return res
                 .status(apiRes.statusCode)
@@ -199,7 +295,7 @@ app.get("/api/edhtop16", async (req, res) => {
         apiRes.on("data", (chunk) => {
           data += chunk;
         });
-        apiRes.on("end", () => {
+        apiRes.on("end", async () => {
           if (apiRes.statusCode && apiRes.statusCode >= 400) {
             return res
               .status(apiRes.statusCode)
@@ -212,10 +308,12 @@ app.get("/api/edhtop16", async (req, res) => {
               return res.status(502).json({ error: `EDHTop16: ${upstreamError}` });
             }
             const commanderData = json?.data?.commander || null;
+            const releaseInfo = await fetchCardReleaseInfo(cardName);
             const responseData = {
               commander: commanderData?.name || commander,
               cardDetail: commanderData?.cardDetail || null,
               cardWinrateStats: commanderData?.cardWinrateStats || null,
+              cardMeta: releaseInfo,
             };
             edhCache.set(cacheKey, { data: responseData, timestamp: Date.now() });
             return res.json(responseData);
@@ -241,7 +339,7 @@ app.get("/api/edhtop16-staples", async (req, res) => {
   try {
     const commander = normalizeText(req.query.commander);
     const timePeriod = normalizeText(req.query.timePeriod || "ONE_YEAR");
-    const minEventSize = Number(req.query.minEventSize || 50);
+    const minEventSize = Number(req.query.minEventSize || DEFAULT_MIN_EVENT_SIZE);
     const threshold = Number(req.query.threshold ?? 75);
 
     if (!commander) {

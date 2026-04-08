@@ -47,12 +47,12 @@ The server exposes two endpoints:
 - `GET /api/deck?id=<moxfield-id-or-url>`  
   Proxies Moxfield deck data from `https://api.moxfield.com/v2/decks/all/<id>`.
 - `GET /api/edhtop16?commander=<name>&card=<name>&timePeriod=<period>&minEventSize=<n>`  
-  Proxies EDHTop16 card stats. Defaults to `timePeriod=ONE_YEAR` and `minEventSize=50`.
+  Proxies EDHTop16 card stats. Defaults to `timePeriod=ONE_YEAR` and `minEventSize=30`.
 
 ## Configuration
 In `app.js`:
 - `timePeriod` is set to `THREE_MONTHS`
-- `minEventSize` is set to `50`
+- `minEventSize` is set to `30`
 
 In `server.js`:
 - `PORT` defaults to `3000` (override with `PORT` env var)

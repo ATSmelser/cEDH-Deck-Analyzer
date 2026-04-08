@@ -24,11 +24,16 @@ const exclusionsListEl = document.getElementById("missingStaplesList");
 const timeWindowSelectEl = document.getElementById("timeWindowSelect");
 const sortHeaderEls = document.querySelectorAll("th[data-sort]");
 
-const RECENT_TREND_PERIOD = "THREE_MONTHS";
-const BASELINE_TREND_PERIOD = "ALL_TIME";
-const RECENT_TREND_LABEL = "Last 3 months";
 const TAKEAWAY_PERIODS = ["THREE_MONTHS", "SIX_MONTHS", "ONE_YEAR"];
-const SUMMARY_COMPARISON_PERIOD = "ONE_YEAR";
+const TREND_PERIODS = ["THREE_MONTHS", "SIX_MONTHS", "ONE_YEAR", "ALL_TIME"];
+const TREND_BUCKETS = [
+  { key: "TWELVE_PLUS", upper: "ALL_TIME", lower: "ONE_YEAR", ageMonths: 18, minAgeMonths: 12 },
+  { key: "SIX_TO_TWELVE", upper: "ONE_YEAR", lower: "SIX_MONTHS", ageMonths: 9, minAgeMonths: 6 },
+  { key: "THREE_TO_SIX", upper: "SIX_MONTHS", lower: "THREE_MONTHS", ageMonths: 4.5, minAgeMonths: 3 },
+  { key: "ZERO_TO_THREE", upper: "THREE_MONTHS", lower: null, ageMonths: 1.5, minAgeMonths: 0 },
+];
+const DECK_SUMMARY_PERIOD = "SIX_MONTHS";
+const EXCLUSION_COMPARISON_PERIOD = "ONE_YEAR";
 const TIME_PERIOD_LABELS = {
   THREE_MONTHS: "3 months",
   SIX_MONTHS: "6 months",
@@ -36,7 +41,7 @@ const TIME_PERIOD_LABELS = {
   ALL_TIME: "All time",
 };
 const NOTABLE_EXCLUSIONS_FETCH_THRESHOLD = 0;
-const STAPLES_MIN_EVENT_SIZE = 50;
+const EDH_MIN_EVENT_SIZE = 30;
 const SIGNIFICANCE_THRESHOLD = 0.05;
 const MIN_COMMANDER_ENTRIES_FOR_SUMMARY = 100;
 
@@ -201,10 +206,68 @@ function formatPercentValue(value) {
   return `${sign}${value.toFixed(1)}%`;
 }
 
-function formatTrendDelta(value) {
-  if (typeof value !== "number" || !Number.isFinite(value)) return "n/a";
-  const sign = value > 0 ? "+" : "";
-  return `${sign}${(value * 100).toFixed(1)}%`;
+function classifyTrendSignal(value) {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return {
+      symbol: "n/a",
+      className: "trend-signal--na",
+      label: "No trend",
+      detail: "",
+    };
+  }
+
+  const absValue = Math.abs(value);
+
+  if (absValue < 0.0008) {
+    return {
+      symbol: "\u2192",
+      className: "trend-signal--neutral",
+      label: "Neutral",
+      detail: "",
+    };
+  }
+
+  if (value >= 0.003) {
+    return {
+      symbol: "\u2191",
+      className: "trend-signal--strong-up",
+      label: "Big increase",
+      detail: "",
+    };
+  }
+
+  if (value > 0) {
+    return {
+      symbol: "\u2197",
+      className: "trend-signal--up",
+      label: "Moderate increase",
+      detail: "",
+    };
+  }
+
+  if (value <= -0.003) {
+    return {
+      symbol: "\u2193",
+      className: "trend-signal--strong-down",
+      label: "Big decrease",
+      detail: "",
+    };
+  }
+
+  return {
+    symbol: "\u2198",
+    className: "trend-signal--down",
+    label: "Moderate decrease",
+    detail: "",
+  };
+}
+
+function createTrendSignalElement(signal) {
+  const el = document.createElement("span");
+  el.textContent = signal.symbol;
+  el.className = `trend-signal ${signal.className}`;
+  el.setAttribute("aria-label", signal.label);
+  return el;
 }
 
 function formatWithText(withCard) {
@@ -234,6 +297,104 @@ function computeInclusionValue(withCard, withoutCard) {
   if (total <= 0) return null;
 
   return withTotal / total;
+}
+
+function parseIsoDate(value) {
+  if (!value) return null;
+  const parsed = new Date(`${value}T00:00:00Z`);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
+function computeCardAgeMonths(firstReleasedAt) {
+  const releaseDate = parseIsoDate(firstReleasedAt);
+  if (!releaseDate) return null;
+
+  const now = new Date();
+  const diffMs = now.getTime() - releaseDate.getTime();
+  if (!Number.isFinite(diffMs) || diffMs < 0) return 0;
+
+  return diffMs / (30.4375 * 24 * 60 * 60 * 1000);
+}
+
+function toBucketCounts(withCard, withoutCard) {
+  const withEntries = Number(withCard?.totalEntries ?? 0);
+  const withoutEntries = Number(withoutCard?.totalEntries ?? 0);
+  const withTopCuts = Number(withCard?.topCuts ?? 0);
+
+  if (
+    ![withEntries, withoutEntries, withTopCuts].every((value) => Number.isFinite(value)) ||
+    withEntries < 0 ||
+    withoutEntries < 0 ||
+    withTopCuts < 0 ||
+    withTopCuts > withEntries
+  ) {
+    return null;
+  }
+
+  return {
+    withEntries,
+    withoutEntries,
+    withTopCuts,
+  };
+}
+
+function subtractBucketCounts(upper, lower) {
+  if (!upper) return null;
+  if (!lower) return { ...upper };
+
+  const withEntries = upper.withEntries - lower.withEntries;
+  const withoutEntries = upper.withoutEntries - lower.withoutEntries;
+  const withTopCuts = upper.withTopCuts - lower.withTopCuts;
+
+  if (
+    ![withEntries, withoutEntries, withTopCuts].every((value) => Number.isFinite(value)) ||
+    withEntries < 0 ||
+    withoutEntries < 0 ||
+    withTopCuts < 0 ||
+    withTopCuts > withEntries
+  ) {
+    return null;
+  }
+
+  return {
+    withEntries,
+    withoutEntries,
+    withTopCuts,
+  };
+}
+
+function computeWeightedSlope(points) {
+  const validPoints = points.filter(
+    (point) =>
+      typeof point?.x === "number" &&
+      Number.isFinite(point.x) &&
+      typeof point?.y === "number" &&
+      Number.isFinite(point.y) &&
+      typeof point?.w === "number" &&
+      Number.isFinite(point.w) &&
+      point.w > 0
+  );
+
+  if (validPoints.length < 2) return null;
+
+  const totalWeight = validPoints.reduce((sum, point) => sum + point.w, 0);
+  if (totalWeight <= 0) return null;
+
+  const weightedX = validPoints.reduce((sum, point) => sum + point.w * point.x, 0) / totalWeight;
+  const weightedY = validPoints.reduce((sum, point) => sum + point.w * point.y, 0) / totalWeight;
+  const denominator = validPoints.reduce(
+    (sum, point) => sum + point.w * (point.x - weightedX) * (point.x - weightedX),
+    0
+  );
+
+  if (denominator <= 0) return null;
+
+  return (
+    validPoints.reduce(
+      (sum, point) => sum + point.w * (point.x - weightedX) * (point.y - weightedY),
+      0
+    ) / denominator
+  );
 }
 
 function computeDeltaValue(withCard, withoutCard) {
@@ -361,33 +522,83 @@ function buildErrorStats() {
   };
 }
 
-function buildTrendStats(recentWith, recentWithout, baselineWith, baselineWithout) {
-  const recentInclusion = computeInclusionValue(recentWith, recentWithout);
-  const baselineInclusion = computeInclusionValue(baselineWith, baselineWithout);
-  const recentTotal =
-    Number(recentWith?.totalEntries ?? 0) + Number(recentWithout?.totalEntries ?? 0);
-  const baselineTotal =
-    Number(baselineWith?.totalEntries ?? 0) + Number(baselineWithout?.totalEntries ?? 0);
+function buildTrendStats(statsByPeriod, firstReleasedAt) {
+  const ageMonths = computeCardAgeMonths(firstReleasedAt);
+  const hasKnownAge = typeof ageMonths === "number" && Number.isFinite(ageMonths);
+
+  if (hasKnownAge && ageMonths < 3) {
+    return {
+      inclusionSlope: null,
+      conversionSlope: null,
+      ageMonths,
+      validBucketCount: 0,
+    };
+  }
+
+  const points = TREND_BUCKETS.map((bucket) => {
+    if (hasKnownAge && ageMonths < bucket.minAgeMonths) return null;
+
+    const upperStats = statsByPeriod.get(bucket.upper) || null;
+    const lowerStats = bucket.lower ? statsByPeriod.get(bucket.lower) || null : null;
+    const upperCounts = toBucketCounts(upperStats?.withCard || null, upperStats?.withoutCard || null);
+    const lowerCounts = bucket.lower
+      ? toBucketCounts(lowerStats?.withCard || null, lowerStats?.withoutCard || null)
+      : null;
+    const bucketCounts = subtractBucketCounts(upperCounts, lowerCounts);
+
+    if (!bucketCounts) return null;
+
+    const inclusionRate =
+      bucketCounts.withEntries + bucketCounts.withoutEntries > 0
+        ? bucketCounts.withEntries / (bucketCounts.withEntries + bucketCounts.withoutEntries)
+        : null;
+    const conversionRate =
+      bucketCounts.withEntries > 0 ? bucketCounts.withTopCuts / bucketCounts.withEntries : null;
+
+    return {
+      ageMonths: bucket.ageMonths,
+      inclusionRate,
+      inclusionWeight: bucketCounts.withEntries + bucketCounts.withoutEntries,
+      conversionRate,
+      conversionWeight: bucketCounts.withEntries,
+    };
+  }).filter(Boolean);
+
+  const inclusionSlope = computeWeightedSlope(
+    points.map((point) => ({
+      x: point.ageMonths,
+      y: point.inclusionRate,
+      w: point.inclusionWeight,
+    }))
+  );
+  const conversionSlope = computeWeightedSlope(
+    points.map((point) => ({
+      x: point.ageMonths,
+      y: point.conversionRate,
+      w: point.conversionWeight,
+    }))
+  );
+
+  const validBucketCount = points.filter(
+    (point) =>
+      (typeof point.inclusionRate === "number" && Number.isFinite(point.inclusionRate)) ||
+      (typeof point.conversionRate === "number" && Number.isFinite(point.conversionRate))
+  ).length;
 
   return {
-    recentInclusion,
-    baselineInclusion,
-    delta:
-      typeof recentInclusion === "number" && typeof baselineInclusion === "number"
-        ? recentInclusion - baselineInclusion
-        : null,
-    recentTotal: Number.isFinite(recentTotal) ? recentTotal : 0,
-    baselineTotal: Number.isFinite(baselineTotal) ? baselineTotal : 0,
+    inclusionSlope: typeof inclusionSlope === "number" ? -inclusionSlope : null,
+    conversionSlope: typeof conversionSlope === "number" ? -conversionSlope : null,
+    ageMonths,
+    validBucketCount,
   };
 }
 
 function buildErrorTrendStats() {
   return {
-    recentInclusion: null,
-    baselineInclusion: null,
-    delta: null,
-    recentTotal: 0,
-    baselineTotal: 0,
+    inclusionSlope: null,
+    conversionSlope: null,
+    ageMonths: null,
+    validBucketCount: 0,
   };
 }
 
@@ -414,7 +625,7 @@ function appendStatsRow(target, entry, stats, trendStats, commander) {
     row.classList.add(deltaValue >= 0 ? "sig-pos" : "sig-neg");
     row.title =
       `Statistically significant ${deltaValue >= 0 ? "positive" : "negative"} impact ` +
-      `(p<0.05) based on ${RECENT_TREND_LABEL} EDHTop16 conversion rates.`;
+      `(p<0.05) based on ${getTimePeriodLabel(selectedTimePeriod)} EDHTop16 conversion rates.`;
   }
 
   const cardCell = document.createElement("td");
@@ -425,28 +636,42 @@ function appendStatsRow(target, entry, stats, trendStats, commander) {
   }
 
   const playRateCell = document.createElement("td");
-  playRateCell.textContent = stats ? stats.inclusionRate : "Loading...";
+  if (stats) {
+    playRateCell.textContent = stats.inclusionRate;
+    const inclusionTrendSignal = classifyTrendSignal(trendStats?.inclusionSlope);
+    playRateCell.append(" ", createTrendSignalElement(inclusionTrendSignal));
+  } else {
+    playRateCell.textContent = "Loading...";
+  }
 
   const winRateCell = document.createElement("td");
-  winRateCell.textContent = stats ? stats.withText : "Loading...";
+  if (stats) {
+    winRateCell.textContent = stats.withText;
+    const conversionTrendSignal = classifyTrendSignal(trendStats?.conversionSlope);
+    winRateCell.append(" ", createTrendSignalElement(conversionTrendSignal));
+  } else {
+    winRateCell.textContent = "Loading...";
+  }
 
   const impactCell = document.createElement("td");
   impactCell.textContent = stats ? stats.deltaText : "Loading...";
 
-  const trendCell = document.createElement("td");
-  trendCell.textContent =
-    trendStats && typeof trendStats.delta === "number"
-      ? formatTrendDelta(trendStats.delta)
-      : "n/a";
-
-  row.append(cardCell, playRateCell, winRateCell, impactCell, trendCell);
+  row.append(cardCell, playRateCell, winRateCell, impactCell);
   target.appendChild(row);
 }
 
 function getTableSortValue(row, metric) {
-  if (metric === "trending") {
-    return typeof row.trendStats?.delta === "number" && Number.isFinite(row.trendStats.delta)
-      ? row.trendStats.delta
+  if (metric === "inclusionTrend") {
+    return typeof row.trendStats?.inclusionSlope === "number" &&
+      Number.isFinite(row.trendStats.inclusionSlope)
+      ? row.trendStats.inclusionSlope
+      : -Infinity;
+  }
+
+  if (metric === "conversionTrend") {
+    return typeof row.trendStats?.conversionSlope === "number" &&
+      Number.isFinite(row.trendStats.conversionSlope)
+      ? row.trendStats.conversionSlope
       : -Infinity;
   }
 
@@ -601,7 +826,7 @@ function buildExclusionTakeaways() {
       detail: formatTakeawayRateDetail(
         `${item.playRate.toFixed(1)}%`,
         item.impactText || "n/a",
-        `(${getTimePeriodLabel(SUMMARY_COMPARISON_PERIOD)})`
+        `(${getTimePeriodLabel(EXCLUSION_COMPARISON_PERIOD)})`
       ),
     }));
 }
@@ -610,7 +835,7 @@ function buildDeckComparisonTakeaway() {
   if (!currentDeck) return null;
 
   const eligibleStats = currentDeck.mainboard
-    .map((entry) => currentTakeawayStats.get(entry.name)?.get(SUMMARY_COMPARISON_PERIOD) || null)
+    .map((entry) => currentTakeawayStats.get(entry.name)?.get(DECK_SUMMARY_PERIOD) || null)
     .filter(
       (stats) =>
         typeof stats?.withRate === "number" &&
@@ -641,7 +866,7 @@ function buildDeckComparisonTakeaway() {
     deckAverage,
     commanderAverage,
     delta,
-    period: SUMMARY_COMPARISON_PERIOD,
+    period: DECK_SUMMARY_PERIOD,
     sampleSize: conversionRates.length,
   };
 }
@@ -650,7 +875,7 @@ function buildDeckPlayRateTakeaway() {
   if (!currentDeck) return null;
 
   const inclusionRates = currentDeck.mainboard
-    .map((entry) => currentTakeawayStats.get(entry.name)?.get(SUMMARY_COMPARISON_PERIOD) || null)
+    .map((entry) => currentTakeawayStats.get(entry.name)?.get(DECK_SUMMARY_PERIOD) || null)
     .filter(
       (stats) =>
         typeof stats?.inclusionValue === "number" && Number.isFinite(stats.inclusionValue)
@@ -664,7 +889,7 @@ function buildDeckPlayRateTakeaway() {
 
   return {
     averagePlayRate,
-    period: SUMMARY_COMPARISON_PERIOD,
+    period: DECK_SUMMARY_PERIOD,
     sampleSize: inclusionRates.length,
   };
 }
@@ -706,16 +931,14 @@ function renderTakeaways() {
 
   if (deckComparisonTextEl && deckComparison) {
     deckComparisonTextEl.textContent =
-      `${deckComparison.sampleSize} included cards average ` +
-      `${formatPercentFromRatio(deckComparison.deckAverage)} conversion versus ` +
+      `Cards in this decklist average ${formatPercentFromRatio(deckComparison.deckAverage)} conversion versus ` +
       `${formatPercentFromRatio(deckComparison.commanderAverage)} for the commander overall ` +
       `(${formatPercentValue(deckComparison.delta)} over ${getTimePeriodLabel(deckComparison.period)}).`;
   }
 
   if (deckPlayRateTextEl && deckPlayRate) {
     deckPlayRateTextEl.textContent =
-      `${deckPlayRate.sampleSize} included cards average ` +
-      `${formatPercentFromRatio(deckPlayRate.averagePlayRate)} play rate over ` +
+      `Cards in this decklist average ${formatPercentFromRatio(deckPlayRate.averagePlayRate)} play rate over ` +
       `${getTimePeriodLabel(deckPlayRate.period)}.`;
   }
 
@@ -757,7 +980,7 @@ async function fetchCommanderStaples(commander, timePeriod) {
   const params = new URLSearchParams({
     commander,
     timePeriod,
-    minEventSize: String(STAPLES_MIN_EVENT_SIZE),
+    minEventSize: String(EDH_MIN_EVENT_SIZE),
     threshold: String(NOTABLE_EXCLUSIONS_FETCH_THRESHOLD),
   });
 
@@ -900,7 +1123,7 @@ async function loadMissingStaples() {
           fetchCardStat,
           currentCommander,
           card.name,
-          SUMMARY_COMPARISON_PERIOD
+          EXCLUSION_COMPARISON_PERIOD
         );
 
         return {
@@ -1033,12 +1256,24 @@ async function loadEdhStats({ reloadTakeaways = true } = {}) {
       nextIndex += 1;
 
       try {
-        const selectedResult = await fetchWithPartnerFallback(
-          fetchCardStat,
-          originalCommander,
-          cardName,
-          selectedTimePeriod
+        const periodsToLoad = new Set([selectedTimePeriod, ...TREND_PERIODS]);
+        if (reloadTakeaways) {
+          TAKEAWAY_PERIODS.forEach((period) => periodsToLoad.add(period));
+        }
+
+        const periodEntries = await Promise.all(
+          Array.from(periodsToLoad).map(async (period) => {
+            const result = await fetchWithPartnerFallback(
+              fetchCardStat,
+              originalCommander,
+              cardName,
+              period
+            );
+            return [period, result];
+          })
         );
+        const periodResults = new Map(periodEntries);
+        const selectedResult = periodResults.get(selectedTimePeriod);
 
         if (!commanderResolved && selectedResult.usedCommander !== currentCommander) {
           updateCommanderDisplay(selectedResult.usedCommander);
@@ -1052,59 +1287,24 @@ async function loadEdhStats({ reloadTakeaways = true } = {}) {
         if (reloadTakeaways) {
           const takeawayStatsByPeriod = new Map();
           takeawayStatsByPeriod.set(selectedTimePeriod, buildCardStats(selectedWith, selectedWithout));
-
-          const takeawayResults = await Promise.allSettled(
-            TAKEAWAY_PERIODS.filter((period) => period !== selectedTimePeriod).map(async (period) => {
-              const periodData = (
-                await fetchWithPartnerFallback(fetchCardStat, currentCommander, cardName, period)
-              ).data;
-              return { period, periodData };
-            })
-          );
-
-          takeawayResults.forEach((result) => {
-            if (result.status !== "fulfilled") return;
-
-            const withCard = result.value.periodData?.cardWinrateStats?.withCard || null;
-            const withoutCard = result.value.periodData?.cardWinrateStats?.withoutCard || null;
-            takeawayStatsByPeriod.set(result.value.period, buildCardStats(withCard, withoutCard));
+          TAKEAWAY_PERIODS.filter((period) => period !== selectedTimePeriod).forEach((period) => {
+            const periodResult = periodResults.get(period);
+            const withCard = periodResult?.data?.cardWinrateStats?.withCard || null;
+            const withoutCard = periodResult?.data?.cardWinrateStats?.withoutCard || null;
+            takeawayStatsByPeriod.set(period, buildCardStats(withCard, withoutCard));
           });
 
           currentTakeawayStats.set(cardName, takeawayStatsByPeriod);
         }
 
-        const recentData =
-          selectedTimePeriod === RECENT_TREND_PERIOD
-            ? selectedResult.data
-            : (
-                await fetchWithPartnerFallback(
-                  fetchCardStat,
-                  currentCommander,
-                  cardName,
-                  RECENT_TREND_PERIOD
-                )
-              ).data;
+        const trendStatsByPeriod = new Map();
+        TREND_PERIODS.forEach((period) => {
+          trendStatsByPeriod.set(period, periodResults.get(period)?.data?.cardWinrateStats || null);
+        });
 
-        const recentWith = recentData?.cardWinrateStats?.withCard || null;
-        const recentWithout = recentData?.cardWinrateStats?.withoutCard || null;
-
-        const baselineData =
-          BASELINE_TREND_PERIOD === RECENT_TREND_PERIOD
-            ? recentData
-            : (
-                await fetchWithPartnerFallback(
-                  fetchCardStat,
-                  currentCommander,
-                  cardName,
-                  BASELINE_TREND_PERIOD
-                )
-              ).data;
-
-        const baselineWith = baselineData?.cardWinrateStats?.withCard || null;
-        const baselineWithout = baselineData?.cardWinrateStats?.withoutCard || null;
         currentTrends.set(
           cardName,
-          buildTrendStats(recentWith, recentWithout, baselineWith, baselineWithout)
+          buildTrendStats(trendStatsByPeriod, selectedResult.data?.cardMeta?.firstReleasedAt || null)
         );
       } catch (error) {
         currentStats.set(cardName, buildErrorStats());

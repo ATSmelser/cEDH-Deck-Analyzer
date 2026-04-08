@@ -453,6 +453,42 @@ a.summary-meta-value:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.stats-table td.trend-signal {
+  display: inline-block;
+  margin-left: 0.35rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  vertical-align: baseline;
+}
+
+.trend-signal--strong-up {
+  color: #61d18c;
+}
+
+.trend-signal--up {
+  color: #b6d86a;
+}
+
+.trend-signal--neutral {
+  color: #f0d35f;
+}
+
+.trend-signal--down {
+  color: #f39a8e;
+}
+
+.trend-signal--strong-down {
+  color: #ee7f71;
+}
+
+.trend-signal--na {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
 @media (max-width: 600px) {
   .app {
     padding: 32px 16px 48px;
